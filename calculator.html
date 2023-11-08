@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            background-color:rgb(210, 229, 229);
+            font-family: sans-serif;
+            outline: none;
+        }
+        .container{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calculator{
+            background-color:rgba(37, 43, 43, 0.211);
+            padding: 15px;
+            border-radius: 30px;
+            border-left:1px solid white ;
+            border-top:1px solid white ;
+            box-shadow: 2px 2px 5px;
+            display: grid;
+            grid-template-columns: repeat(4,70px);
+            
+        }
+        input{
+            grid-column: span 4;
+            height: 70px;
+            background-color:rgb(210, 229, 229);
+            box-shadow: inset 2px 2px 1px;
+            border: none;
+            font-size: 30px;
+            text-align: end;
+            padding: 10px;
+            border-radius: 30px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        button{
+            height: 50px;
+            width: 50px;
+            border: none;
+            border-radius: 50px;
+            box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.725);
+            margin: 5px;
+            font-size: 20px;
+            padding: 5px;
+            
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+        }
+        #eq{
+            width: 115px;
+            background-color: rgba(0, 0, 0, 0.459);
+            color: white;
+        }
+        #eq:hover{
+            background-image: linear-gradient(rgba(127, 124, 124, 0.54),rgb(13, 13, 13));
+            color: white;
+        }
+        .symboles{
+            background-color: rgba(0, 0, 0, 0.459);
+            color: white;
+        }
+        .symboles:hover{
+            background-image: linear-gradient(rgba(127, 124, 124, 0.54),rgb(13, 13, 13));
+            color: white;
+        }
+        #clear{
+            background-color: rgba(255, 0, 0, 0.745);
+        }
+        #clear:hover{
+            background-image: linear-gradient(red,rgba(169, 25, 25, 0.748));
+        }
+        .input{
+            background-color: rgba(0, 0, 0, 0.642);
+            color: white;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="calculator">
+            
+            <input class="input" type="text" placeholder="0" id="output">
+            <button id="clear"  onclick="clear1()">CL</button>
+            <button class="symboles" onclick="del()">DEL</button>
+            <button class="symboles" onclick="display('%')">%</button>
+            <button class="symboles" onclick="display('/')">/</button>
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button class="symboles" onclick="display('*')">*</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button class="symboles" onclick="display('-')">-</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button class="symboles" onclick="display('+')">+</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="display('0')">0</button>
+            <button id="eq" onclick="calculate('=')">=</button >
+            
+
+           
+
+        </div>
+    </div>
+    
+
+    <script>
+        let output = document.getElementById("output");
+        
+        function display(num){
+            output.value += num
+        }
+
+        function calculate(){
+           try{
+                output.value = eval(output.value); 
+            } 
+            catch{
+                alert("Invalide")
+            }
+        }
+
+        function clear1(){
+            output.value = "" ;
+        }
+        function del(){
+            output.value = output.value.slice(0,-1);
+        }
+
+    </script>
+</body>
+</html>
